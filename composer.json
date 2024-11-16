@@ -60,7 +60,7 @@
         ],
         "code-quality": [
             "./vendor/bin/pint -v",
-            "./vendor/bin/phpstan analyse"
+            "./vendor/bin/phpstan analyse --memory-limit=2G"
         ]
     },
     "extra": {

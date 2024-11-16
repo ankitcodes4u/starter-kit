@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Resources\RoleResource\Pages;
 use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
 use BezhanSalleh\FilamentShield\Forms\ShieldSelectAllToggle;
-use App\Filament\Resources\RoleResource\Pages;
 use BezhanSalleh\FilamentShield\Support\Utils;
 use BezhanSalleh\FilamentShield\Traits\HasShieldFormComponents;
 use Filament\Facades\Filament;
@@ -42,6 +42,7 @@ class RoleResource extends Resource implements HasShieldPermissions
                 Forms\Components\Grid::make()
                     ->schema([
                         Forms\Components\Section::make()
+                            ->compact()
                             ->schema([
                                 Forms\Components\TextInput::make('name')
                                     ->label(__('filament-shield::filament-shield.field.name'))
@@ -53,9 +54,9 @@ class RoleResource extends Resource implements HasShieldPermissions
                                 Forms\Components\Hidden::make('guard_name')
                                     // ->label(__('filament-shield::filament-shield.field.guard_name'))
                                     ->default(Utils::getFilamentAuthGuard())
-                                    // ->nullable()
-                                    // ->maxLength(255)
-                                    ,
+                                // ->nullable()
+                                // ->maxLength(255)
+                                ,
 
                                 Forms\Components\Select::make(config('permission.column_names.team_foreign_key'))
                                     ->label(__('filament-shield::filament-shield.field.team'))

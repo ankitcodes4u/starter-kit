@@ -1,14 +1,14 @@
 {
-    "background_color": "#E7B007",
-    "description": "App Description",
+    "background_color": "#18181B",
+    "description": "Starter Kit",
     "dir": "ltr",
     "display": "minimal-ui",
-    "name": "Manpower",
+    "name": "Starter Kit",
     "orientation": "natural",
-    "scope": "https://windowshopping.nepalaza.com",
+    "scope": "https://starter-kit.test",
     "short_name": "Manpower",
-    "start_url": "https://windowshopping.nepalaza.com",
-    "theme_color": "#E7B007",
+    "start_url": "https://starter-kit.test",
+    "theme_color": "#18181B",
     "categories": ["utilities"],
     "screenshots": [
         {
@@ -78,7 +78,7 @@
     "share_target": {
         "method": "GET"
     },
-    "id": "app-name",
+    "id": "starter-kit",
     "lang": "en",
     "display_override": [
         "minimal-ui",

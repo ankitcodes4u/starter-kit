@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('test1234'),
             ]
         );
-        
+
         $user->syncRoles(['super_admin']);
     }
 }

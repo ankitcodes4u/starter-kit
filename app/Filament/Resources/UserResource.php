@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\UserResource\Pages;
-use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\User;
 use Carbon\Carbon;
 use Filament\Forms;
@@ -25,23 +24,29 @@ class UserResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('email')
-                    ->email()
-                    ->unique(ignoreRecord: true)
-                    ->maxLength(255)->required(),
-                Forms\Components\Select::make('roles')
-                    ->relationship('roles', 'name')
-                    ->multiple()
-                    ->preload()
-                    ->searchable()->required(),
-                Forms\Components\TextInput::make('password')
-                    ->password()->minLength(8)->revealable()
-                    ->dehydrateStateUsing(fn($state) => Hash::make($state))
-                    ->dehydrated(fn($state) => filled($state)),
-                Forms\Components\Hidden::make('email_verified_at')->default(Carbon::now()),
+                Forms\Components\Section::make()
+                    ->compact()
+                    ->columns([
+                        'sm' => 2,
+                    ])
+                    ->schema([
+                        Forms\Components\TextInput::make('name')
+                            ->required()
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('email')
+                            ->email()
+                            ->unique(ignoreRecord: true)
+                            ->maxLength(255)->required(),
+                        Forms\Components\Select::make('roles')
+                            ->relationship('roles', 'name')
+                            ->preload()
+                            ->searchable()->required(),
+                        Forms\Components\TextInput::make('password')
+                            ->password()->minLength(8)->revealable()
+                            ->dehydrateStateUsing(fn ($state) => Hash::make($state))
+                            ->dehydrated(fn ($state) => filled($state)),
+                        Forms\Components\Hidden::make('email_verified_at')->default(Carbon::now()),
+                    ]),
             ]);
     }
 
@@ -66,7 +71,8 @@ class UserResource extends Resource
                 Tables\Filters\TrashedFilter::make(),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()->iconButton(),
+                Tables\Actions\DeleteAction::make()->iconButton(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

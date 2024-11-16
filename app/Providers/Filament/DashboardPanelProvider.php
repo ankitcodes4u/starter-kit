@@ -29,7 +29,7 @@ class DashboardPanelProvider extends PanelProvider
             ->id('dashboard')
             ->path('')
             ->plugins([
-                FilamentShieldPlugin::make()
+                FilamentShieldPlugin::make(),
             ])
             ->login()
             ->colors([
@@ -57,9 +57,11 @@ class DashboardPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ])
+            ->spa()
             ->profile()
             ->sidebarCollapsibleOnDesktop()
             ->maxContentWidth(MaxWidth::ScreenLarge)
+            ->favicon(asset('favicon.png'))
             ->viteTheme('resources/css/filament/dashboard/theme.css')
             ->renderHook(PanelsRenderHook::USER_MENU_PROFILE_AFTER, fn () => view('components.dashboard.blocks.size-control-block'))
             ->renderHook(PanelsRenderHook::SIDEBAR_FOOTER, fn () => view('components.dashboard.blocks.copyright-block'))

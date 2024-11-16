@@ -11,7 +11,7 @@ use Wildside\Userstamps\Userstamps;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable, HasRoles, SoftDeletes, Userstamps;
+    use HasFactory, HasRoles, Notifiable, SoftDeletes, Userstamps;
 
     protected $fillable = [
         'name',
