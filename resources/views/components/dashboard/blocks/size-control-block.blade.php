@@ -23,25 +23,42 @@
                 document.exitFullscreen();
             }
         }
-    }" class="flex items-center justify-between gap-2 p-2">
-        <div class="w-full flex items-center justify-center">
-            <x-filament::icon-button size="xl" @click="increaseFontSize()" icon="heroicon-m-plus-circle"
-                color="gray" />
-        </div>
+    }" class="fi-theme-switcher grid grid-flow-col gap-x-1">
+        <button aria-label="Increase font size" type="button" x-on:click="increaseFontSize()"
+            x-tooltip="{
+                content: 'Increase font size',
+                theme: $store.theme,
+            }"
+            class="fi-theme-switcher-btn flex justify-center rounded-md p-2 outline-none transition duration-75 hover:bg-gray-50 focus-visible:bg-gray-50 dark:hover:bg-white/5 dark:focus-visible:bg-white/5 text-gray-400 hover:text-gray-500 focus-visible:text-gray-500 dark:text-gray-500 dark:hover:text-gray-400 dark:focus-visible:text-gray-400">
+            <x-filament::icon icon="heroicon-m-plus-circle" class="h-5 w-5" />
+        </button>
 
-        <div x-show="!fullScreenMode" class="w-full flex items-center justify-center">
-            <x-filament::icon-button size="xl" @click="toggleFullScreenMode()" icon="heroicon-m-arrows-pointing-out"
-                color="gray" />
-        </div>
+        <button x-show="!fullScreenMode" aria-label="Full screen mode" type="button" x-on:click="toggleFullScreenMode()"
+            x-tooltip="{
+                content: 'Full screen mode',
+                theme: $store.theme,
+            }"
+            class="fi-theme-switcher-btn flex justify-center rounded-md p-2 outline-none transition duration-75 hover:bg-gray-50 focus-visible:bg-gray-50 dark:hover:bg-white/5 dark:focus-visible:bg-white/5 text-gray-400 hover:text-gray-500 focus-visible:text-gray-500 dark:text-gray-500 dark:hover:text-gray-400 dark:focus-visible:text-gray-400">
+            <x-filament::icon icon="heroicon-m-arrows-pointing-out" class="h-5 w-5" />
+        </button>
 
-        <div x-show="fullScreenMode" class="w-full flex items-center justify-center">
-            <x-filament::icon-button size="xl" @click="toggleFullScreenMode()" icon="heroicon-m-arrows-pointing-in"
-                color="gray" />
-        </div>
+        <button x-show="fullScreenMode" aria-label="Escape full screen mode" type="button"
+            x-on:click="toggleFullScreenMode()"
+            x-tooltip="{
+                content: 'Escape full screen mode',
+                theme: $store.theme,
+            }"
+            class="fi-theme-switcher-btn flex justify-center rounded-md p-2 outline-none transition duration-75 hover:bg-gray-50 focus-visible:bg-gray-50 dark:hover:bg-white/5 dark:focus-visible:bg-white/5 text-gray-400 hover:text-gray-500 focus-visible:text-gray-500 dark:text-gray-500 dark:hover:text-gray-400 dark:focus-visible:text-gray-400">
+            <x-filament::icon icon="heroicon-m-arrows-pointing-in" class="h-5 w-5" />
+        </button>
 
-        <div class="w-full flex items-center justify-center">
-            <x-filament::icon-button size="xl" @click="decreaseFontSize()" icon="heroicon-m-minus-circle"
-                color="gray" />
-        </div>
+        <button aria-label="Decrease font size" type="button" x-on:click="decreaseFontSize()"
+            x-tooltip="{
+                content: 'Decrease font size',
+                theme: $store.theme,
+            }"
+            class="fi-theme-switcher-btn flex justify-center rounded-md p-2 outline-none transition duration-75 hover:bg-gray-50 focus-visible:bg-gray-50 dark:hover:bg-white/5 dark:focus-visible:bg-white/5 text-gray-400 hover:text-gray-500 focus-visible:text-gray-500 dark:text-gray-500 dark:hover:text-gray-400 dark:focus-visible:text-gray-400">
+            <x-filament::icon icon="heroicon-m-minus-circle" class="h-5 w-5" />
+        </button>
     </div>
 </div>
