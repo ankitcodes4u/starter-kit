@@ -1,0 +1,20 @@
+@import '/vendor/filament/filament/resources/css/theme.css';
+@config 'tailwind.config.js';
+
+.fi-simple-layout {
+    .fi-simple-main-ctn {
+        .fi-simple-main {
+            @apply p-8;
+
+            .fi-simple-header {
+                .fi-logo {
+                    @apply hidden;
+                }
+
+                .fi-simple-header-heading {
+                    @apply text-left w-full;
+                }
+            }
+        }
+    }
+}

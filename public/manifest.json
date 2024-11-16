@@ -1,0 +1,90 @@
+{
+    "background_color": "#E7B007",
+    "description": "App Description",
+    "dir": "ltr",
+    "display": "minimal-ui",
+    "name": "Manpower",
+    "orientation": "natural",
+    "scope": "https://windowshopping.nepalaza.com",
+    "short_name": "Manpower",
+    "start_url": "https://windowshopping.nepalaza.com",
+    "theme_color": "#E7B007",
+    "categories": ["utilities"],
+    "screenshots": [
+        {
+            "src": "/pwa/app-splash-640-1136.jpg",
+            "type": "image/jpg",
+            "sizes": "640x1136",
+            "form_factor": "narrow"
+        },
+        {
+            "src": "/pwa/app-splash-750-1334.jpg",
+            "type": "image/jpg",
+            "sizes": "750x1334",
+            "form_factor": "narrow"
+        },
+        {
+            "src": "/pwa/app-splash-828-1792.jpg",
+            "type": "image/jpg",
+            "sizes": "828x1792",
+            "form_factor": "narrow"
+        },
+        {
+            "src": "/pwa/app-splash-1136-640.jpg",
+            "type": "image/jpg",
+            "sizes": "1136x640",
+            "form_factor": "wide"
+        },
+        {
+            "src": "/pwa/app-splash-1334-750.jpg",
+            "type": "image/jpg",
+            "sizes": "1334x750",
+            "form_factor": "wide"
+        },
+        {
+            "src": "/pwa/app-splash-1792-828.jpg",
+            "type": "image/jpg",
+            "sizes": "1792x828",
+            "form_factor": "wide"
+        }
+    ],
+    "icons": [
+        {
+            "src": "/pwa/manifest-icon-192.maskable.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "/pwa/manifest-icon-192.maskable.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "/pwa/manifest-icon-512.maskable.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "/pwa/manifest-icon-512.maskable.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ],
+    "shortcuts": [],
+    "share_target": {
+        "method": "GET"
+    },
+    "id": "app-name",
+    "lang": "en",
+    "display_override": [
+        "minimal-ui",
+        "standalone",
+        "fullscreen",
+        "window-controls-overlay",
+        "browser"
+    ]
+}
