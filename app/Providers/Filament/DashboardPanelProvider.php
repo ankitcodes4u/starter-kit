@@ -27,7 +27,7 @@ class DashboardPanelProvider extends PanelProvider
         return $panel
             ->default()
             ->id('dashboard')
-            ->path('')
+            ->path('dashboard')
             ->plugins([
                 FilamentShieldPlugin::make(),
             ])
@@ -57,7 +57,6 @@ class DashboardPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ])
-            ->spa()
             ->profile()
             ->sidebarCollapsibleOnDesktop()
             ->maxContentWidth(MaxWidth::ScreenLarge)
