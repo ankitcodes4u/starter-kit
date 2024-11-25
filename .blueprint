@@ -1,2 +1,51 @@
+created:
+    - database/factories/UnitFactory.php
+    - database/factories/CategoryFactory.php
+    - database/factories/BrandFactory.php
+    - database/factories/AttributeFactory.php
+    - database/factories/TariffFactory.php
+    - database/factories/ShippingRuleFactory.php
+    - database/factories/ProductFactory.php
+    - database/factories/ValuationFactory.php
+    - database/factories/RequestFactory.php
+    - database/factories/OrderFactory.php
+    - database/factories/RatingReviewFactory.php
+    - database/factories/PageFactory.php
+    - database/migrations/2024_11_23_131522_create_units_table.php
+    - database/migrations/2024_11_23_131523_create_categories_table.php
+    - database/migrations/2024_11_23_131524_create_brands_table.php
+    - database/migrations/2024_11_23_131525_create_attributes_table.php
+    - database/migrations/2024_11_23_131526_create_tariffs_table.php
+    - database/migrations/2024_11_23_131527_create_shipping_rules_table.php
+    - database/migrations/2024_11_23_131528_create_products_table.php
+    - database/migrations/2024_11_23_131529_create_valuations_table.php
+    - database/migrations/2024_11_23_131530_create_requests_table.php
+    - database/migrations/2024_11_23_131531_create_orders_table.php
+    - database/migrations/2024_11_23_131532_create_rating_reviews_table.php
+    - database/migrations/2024_11_23_131533_create_pages_table.php
+    - app/Models/Unit.php
+    - app/Models/Category.php
+    - app/Models/Brand.php
+    - app/Models/Attribute.php
+    - app/Models/Tariff.php
+    - app/Models/ShippingRule.php
+    - app/Models/Product.php
+    - app/Models/Valuation.php
+    - app/Models/Request.php
+    - app/Models/Order.php
+    - app/Models/RatingReview.php
+    - app/Models/Page.php
 models:
-    User: { name: string, email: string, email_verified_at: 'datetime nullable', password: string, remember_token: 'string nullable' }
+    User: { name: string, email: string, email_verified_at: 'datetime nullable', password: string, store: 'text nullable', remember_token: 'string nullable' }
+    Unit: { id: id, name: 'nullable string:255', status: 'nullable string:255', created_by: 'nullable unsignedBigInteger', updated_by: 'nullable unsignedBigInteger', timestamps: timestamps, softdeletes: softDeletes }
+    Category: { id: id, parent_id: 'id nullable foreign:categories.id', image: 'nullable string:255', name: 'nullable string:255', status: 'nullable string:255', created_by: 'nullable unsignedBigInteger', updated_by: 'nullable unsignedBigInteger', timestamps: timestamps, softdeletes: softDeletes }
+    Brand: { id: id, image: 'nullable string:255', name: 'nullable string:255', status: 'nullable string:255', created_by: 'nullable unsignedBigInteger', updated_by: 'nullable unsignedBigInteger', timestamps: timestamps, softdeletes: softDeletes }
+    Attribute: { id: id, name: 'nullable string:255', values: 'nullable json', status: 'nullable string:255', created_by: 'nullable unsignedBigInteger', updated_by: 'nullable unsignedBigInteger', timestamps: timestamps, softdeletes: softDeletes }
+    Tariff: { id: id, hsn_code: 'nullable string:255', description_of_goods: 'nullable text', units: 'nullable json', price: 'nullable double:12,2', type: 'nullable string:255', status: 'nullable string:255', created_by: 'nullable unsignedBigInteger', updated_by: 'nullable unsignedBigInteger', timestamps: timestamps, softdeletes: softDeletes }
+    ShippingRule: { id: id, name: 'nullable string:255', hsn_code: 'nullable string:255', rules: 'nullable json', applied_to_all: 'nullable boolean', status: 'nullable string:255', created_by: 'nullable unsignedBigInteger', updated_by: 'nullable unsignedBigInteger', timestamps: timestamps, softdeletes: softDeletes }
+    Product: { id: id, hsn_code: 'nullable string:255', images: 'nullable json', videos: 'nullable json', link: 'nullable string:500', name: 'nullable string:255', price: 'nullable double:12,2', bulk_price: 'nullable json', brand_id: 'id nullable foreign:brands.id', category_id: 'id nullable foreign:categories.id', unit_id: 'id nullable foreign:units.id', minimum_order_quantity: 'nullable integer', attributes: 'nullable json', badge: 'nullable json', overview: 'nullable text', description: 'nullable text', faq: 'nullable text', refundable: 'nullable boolean', warranty: 'nullable boolean', meta_title: 'nullable string:255', meta_keywords: 'nullable string:500', meta_description: 'nullable string:500', additional: 'nullable json', status: 'nullable string:255', remarks: 'nullable text', created_by: 'nullable unsignedBigInteger', updated_by: 'nullable unsignedBigInteger', timestamps: timestamps, softdeletes: softDeletes }
+    Valuation: { id: id, hsn_code: 'nullable string:255', units: 'nullable json', price: 'nullable double:12,2', status: 'nullable string:255', created_by: 'nullable unsignedBigInteger', updated_by: 'nullable unsignedBigInteger', timestamps: timestamps, softdeletes: softDeletes }
+    Request: { id: id, name: 'nullable string:255', email: 'nullable string:255', contact: 'nullable string:255', subject: 'nullable string:255', images: 'nullable json', message: 'nullable text', status: 'nullable string:255', remarks: 'nullable text', created_by: 'nullable unsignedBigInteger', updated_by: 'nullable unsignedBigInteger', timestamps: timestamps, softdeletes: softDeletes }
+    Order: { id: id, order: 'nullable string:255 unique', payment_method: 'nullable string:255', payment_status: 'nullable string:255', items: 'nullable json', subtotal: 'nullable double:12,2', shipping: 'nullable double:12,2', total: 'nullabl double:12,2', status: 'nullable string:255', created_by: 'nullable unsignedBigInteger', updated_by: 'nullable unsignedBigInteger', timestamps: timestamps, softdeletes: softDeletes }
+    RatingReview: { id: id, product_id: 'id nullable foreign:products.id', rating: 'nullable integer', review: 'nullable text', status: 'nullable string:255', remarks: 'nullable text', created_by: 'nullable unsignedBigInteger', updated_by: 'nullable unsignedBigInteger', timestamps: timestamps, softdeletes: softDeletes }
+    Page: { id: id, title: 'nullable string:255', slug: 'nullable string:255 unique', description: 'nullable longText', meta_title: 'nullable string:255', meta_keywords: 'nullable string:500', meta_description: 'nullable string:500', additional: 'nullable json', status: 'nullable string:255', created_by: 'nullable unsignedBigInteger', updated_by: 'nullable unsignedBigInteger', timestamps: timestamps, softdeletes: softDeletes }

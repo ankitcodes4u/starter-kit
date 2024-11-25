@@ -1,5 +1,164 @@
 models:
-  # ...
+  Unit:
+    id
+    name: nullable string:255
+    status: nullable string:255 # Public, Private
+    created_by: nullable unsignedBigInteger
+    updated_by: nullable unsignedBigInteger
+    timestamps
+    softDeletes
 
-controllers:
-  # ...
+  Category:
+    id
+    parent_id: id nullable foreign:categories.id
+    image: nullable string:255
+    name: nullable string:255
+    status: nullable string:255 # Public, Private
+    created_by: nullable unsignedBigInteger
+    updated_by: nullable unsignedBigInteger
+    timestamps
+    softDeletes
+
+  Brand:
+    id
+    image: nullable string:255
+    name: nullable string:255
+    status: nullable string:255 # Public, Private
+    created_by: nullable unsignedBigInteger
+    updated_by: nullable unsignedBigInteger
+    timestamps
+    softDeletes
+
+  Attribute:
+    id
+    name: nullable string:255
+    values: nullable json
+    status: nullable string:255 # Public, Private
+    created_by: nullable unsignedBigInteger
+    updated_by: nullable unsignedBigInteger
+    timestamps
+    softDeletes
+
+  Tariff:
+    id
+    hsn_code: nullable string:255
+    description_of_goods: nullable text
+    units: nullable json
+    price: nullable double:12,2
+    type: nullable string:255 # Flat, Percent
+    status: nullable string:255 # Public, Private
+    created_by: nullable unsignedBigInteger
+    updated_by: nullable unsignedBigInteger
+    timestamps
+    softDeletes
+
+  ShippingRule:
+    id
+    name: nullable string:255
+    hsn_code: nullable string:255
+    rules: nullable json
+    applied_to_all: nullable boolean # Yes, No
+    status: nullable string:255 # Public, Private
+    created_by: nullable unsignedBigInteger
+    updated_by: nullable unsignedBigInteger
+    timestamps
+    softDeletes
+
+  Product:
+    id
+    hsn_code: nullable string:255
+    images: nullable json
+    videos: nullable json
+    link: nullable string:500
+    name: nullable string:255
+    price: nullable double:12,2
+    bulk_price: nullable json
+    brand_id: id nullable foreign:brands.id
+    category_id: id nullable foreign:categories.id
+    unit_id: id nullable foreign:units.id
+    minimum_order_quantity: nullable integer
+    attributes: nullable json
+    badge: nullable json
+    overview: nullable text
+    description: nullable text
+    faq: nullable text
+    refundable: nullable boolean # Yes, No
+    warranty: nullable boolean # Yes, No
+    meta_title: nullable string:255
+    meta_keywords: nullable string:500
+    meta_description: nullable string:500
+    additional: nullable json
+    status: nullable string:255 # Public, Private
+    remarks: nullable text
+    created_by: nullable unsignedBigInteger
+    updated_by: nullable unsignedBigInteger
+    timestamps
+    softDeletes
+
+  Valuation:
+    id
+    hsn_code: nullable string:255
+    units: nullable json
+    price: nullable double:12,2
+    status: nullable string:255 # Public, Private
+    created_by: nullable unsignedBigInteger
+    updated_by: nullable unsignedBigInteger
+    timestamps
+    softDeletes
+
+  Request:
+    id
+    name: nullable string:255
+    email: nullable string:255
+    contact: nullable string:255
+    subject: nullable string:255
+    images: nullable json
+    message: nullable text
+    status: nullable string:255 # Pending, Resolved, Un-Resolved
+    remarks: nullable text
+    created_by: nullable unsignedBigInteger
+    updated_by: nullable unsignedBigInteger
+    timestamps
+    softDeletes
+
+  Order:
+    id
+    order: nullable string:255 unique
+    payment_method: nullable string:255 # Cash on delivery, Bank, Esewa, Khalti, IME Pay, Others
+    payment_status: nullable string:255 # Paid, Un-Paid
+    items: nullable json # table:- Product, Quantity, Price, Total
+    subtotal: nullable double:12,2
+    shipping: nullable double:12,2
+    total: nullabl double:12,2
+    status: nullable string:255 # Pending, Confirmed, Picked up, On the way, Delivered
+    created_by: nullable unsignedBigInteger
+    updated_by: nullable unsignedBigInteger
+    timestamps
+    softDeletes
+
+  RatingReview:
+    id
+    product_id: id nullable foreign:products.id
+    rating: nullable integer
+    review: nullable text
+    status: nullable string:255 # Public, Private
+    remarks: nullable text
+    created_by: nullable unsignedBigInteger
+    updated_by: nullable unsignedBigInteger
+    timestamps
+    softDeletes
+
+  Page:
+    id
+    title: nullable string:255
+    slug: nullable string:255 unique
+    description: nullable longText
+    meta_title: nullable string:255
+    meta_keywords: nullable string:500
+    meta_description: nullable string:500
+    additional: nullable json
+    status: nullable string:255 # Public, Private
+    created_by: nullable unsignedBigInteger
+    updated_by: nullable unsignedBigInteger
+    timestamps
+    softDeletes

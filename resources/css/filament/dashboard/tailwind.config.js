@@ -8,5 +8,6 @@ export default {
         './resources/views/components/dashboard/**/*.blade.php',
         './resources/views/components/dashboard/*.blade.php',
         './vendor/filament/**/*.blade.php',
+        './vendor/awcodes/filament-table-repeater/resources/**/*.blade.php'
     ],
 }
