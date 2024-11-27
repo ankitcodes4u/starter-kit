@@ -2,8 +2,14 @@
 
 namespace App\Filament\Resources;
 
+use App\Enums\OrderStatus;
+use App\Enums\PaymentMethods;
+use App\Enums\Status;
 use App\Filament\Resources\OrderResource\Pages;
 use App\Models\Order;
+use App\Models\Product;
+use Awcodes\TableRepeater\Components\TableRepeater;
+use Awcodes\TableRepeater\Header;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -24,23 +30,70 @@ class OrderResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('order'),
-                Forms\Components\TextInput::make('payment_method'),
-                Forms\Components\TextInput::make('payment_status'),
-                Forms\Components\Textarea::make('items')
-                    ->columnSpanFull(),
-                Forms\Components\TextInput::make('subtotal')
-                    ->numeric(),
-                Forms\Components\TextInput::make('shipping')
-                    ->numeric(),
-                Forms\Components\TextInput::make('total')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('status'),
-                Forms\Components\TextInput::make('created_by')
-                    ->numeric(),
-                Forms\Components\TextInput::make('updated_by')
-                    ->numeric(),
+                Forms\Components\Section::make()
+                    ->compact()
+                    ->schema([
+                        Forms\Components\Select::make('creator')
+                            ->label('Customer / Creator')
+                            ->relationship('creator', 'email')
+                            ->searchable()
+                            ->placeholder('Select Customer')
+                            ->required()
+                            ->preload()
+                    ]),
+                Forms\Components\Section::make()
+                    ->compact()
+                    ->columns([
+                        'sm' => 2
+                    ])
+                    ->schema([
+                        Forms\Components\TextInput::make('order')
+                            ->readOnly()
+                            ->label('Order ID')
+                            ->helperText(function ($context) {
+                                if ($context === 'create') {
+                                    return 'This value will be auto-generated.';
+                                }
+                            }),
+                        Forms\Components\Select::make('payment_method')
+                            ->options(PaymentMethods::class)
+                            ->required()
+                            ->placeholder('Select Payment Method'),
+                        TableRepeater::make('items')
+                            ->columnSpanFull()
+                            ->headers([
+                                Header::make('Product Name'),
+                                Header::make('Quantity')->width('80px'),
+                                Header::make('Unit Price')->width('100px'),
+                                Header::make('Total')->width('150px'),
+                            ])
+                            ->schema([
+                                Forms\Components\Select::make('product_name')
+                                    ->options(fn() => Product::where('status', Status::Public)->pluck('id', 'name'))
+                                    ->searchable()
+                                    ->placeholder('Select Product')
+                                    ->preload()
+                                    ->required(),
+                                Forms\Components\TextInput::make('quantity')->numeric(),
+                                Forms\Components\TextInput::make('unit_quantity')->numeric(),
+                                Forms\Components\TextInput::make('total')->numeric()
+                            ]),
+                        Forms\Components\TextInput::make('subtotal')
+                            ->prefix('NPR')
+                            ->numeric(),
+                        Forms\Components\TextInput::make('shipping')
+                            ->prefix('NPR')
+                            ->numeric(),
+                        Forms\Components\TextInput::make('total')
+                            ->prefix('NPR')
+                            ->required()
+                            ->numeric(),
+                        Forms\Components\ToggleButtons::make('status')
+                            ->options(OrderStatus::class)
+                            ->required()
+                            ->inline()
+                            ->default(OrderStatus::Pending),
+                    ])
             ]);
     }
 
