@@ -7,7 +7,7 @@ use Filament\Support\Contracts\HasLabel;
 
 enum OrderStatus: string implements HasColor, HasLabel
 {
-    # Pending, Confirmed, Picked up, On the way, Delivered
+    // Pending, Confirmed, Picked up, On the way, Delivered
     case Pending = 'Pending';
     case Confirmed = 'Confirmed';
     case PickedUp = 'Picked Up';

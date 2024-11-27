@@ -39,12 +39,12 @@ class OrderResource extends Resource
                             ->searchable()
                             ->placeholder('Select Customer')
                             ->required()
-                            ->preload()
+                            ->preload(),
                     ]),
                 Forms\Components\Section::make()
                     ->compact()
                     ->columns([
-                        'sm' => 2
+                        'sm' => 2,
                     ])
                     ->schema([
                         Forms\Components\TextInput::make('order')
@@ -69,14 +69,14 @@ class OrderResource extends Resource
                             ])
                             ->schema([
                                 Forms\Components\Select::make('product_name')
-                                    ->options(fn() => Product::where('status', Status::Public)->pluck('id', 'name'))
+                                    ->options(fn () => Product::where('status', Status::Public)->pluck('id', 'name'))
                                     ->searchable()
                                     ->placeholder('Select Product')
                                     ->preload()
                                     ->required(),
                                 Forms\Components\TextInput::make('quantity')->numeric(),
                                 Forms\Components\TextInput::make('unit_quantity')->numeric(),
-                                Forms\Components\TextInput::make('total')->numeric()
+                                Forms\Components\TextInput::make('total')->numeric(),
                             ]),
                         Forms\Components\TextInput::make('subtotal')
                             ->prefix('NPR')
@@ -93,7 +93,7 @@ class OrderResource extends Resource
                             ->required()
                             ->inline()
                             ->default(OrderStatus::Pending),
-                    ])
+                    ]),
             ]);
     }
 
