@@ -11,11 +11,6 @@ class ShippingRule extends Model
     use HasFactory, SoftDeletes;
     use \Wildside\Userstamps\Userstamps;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'name',
         'hsn_code',
@@ -26,11 +21,6 @@ class ShippingRule extends Model
         'updated_by',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
         'id' => 'integer',
         'rules' => 'array',

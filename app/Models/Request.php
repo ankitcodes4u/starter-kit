@@ -11,11 +11,6 @@ class Request extends Model
     use HasFactory, SoftDeletes;
     use \Wildside\Userstamps\Userstamps;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'name',
         'email',
@@ -29,11 +24,6 @@ class Request extends Model
         'updated_by',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
         'id' => 'integer',
         'images' => 'array',

@@ -11,11 +11,6 @@ class Unit extends Model
     use HasFactory, SoftDeletes;
     use \Wildside\Userstamps\Userstamps;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'name',
         'status',
@@ -23,11 +18,6 @@ class Unit extends Model
         'updated_by',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
         'id' => 'integer',
         'created_by' => 'integer',

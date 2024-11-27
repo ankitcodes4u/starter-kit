@@ -11,11 +11,6 @@ class Tariff extends Model
     use HasFactory, SoftDeletes;
     use \Wildside\Userstamps\Userstamps;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'hsn_code',
         'description_of_goods',
@@ -27,11 +22,6 @@ class Tariff extends Model
         'updated_by',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
         'id' => 'integer',
         'units' => 'array',

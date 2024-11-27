@@ -10,12 +10,12 @@ enum Status: string implements HasColor, HasLabel
     case Public = 'Public';
     case Private = 'Private';
 
-    public function getLabel(): ?string
+    public function getLabel(): string
     {
         return $this->name;
     }
 
-    public function getColor(): string|array|null
+    public function getColor(): string
     {
         return match ($this) {
             self::Public => 'success',

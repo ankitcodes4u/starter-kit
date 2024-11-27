@@ -11,18 +11,18 @@ created:
     - database/factories/OrderFactory.php
     - database/factories/RatingReviewFactory.php
     - database/factories/PageFactory.php
-    - database/migrations/2024_11_23_131522_create_units_table.php
-    - database/migrations/2024_11_23_131523_create_categories_table.php
-    - database/migrations/2024_11_23_131524_create_brands_table.php
-    - database/migrations/2024_11_23_131525_create_attributes_table.php
-    - database/migrations/2024_11_23_131526_create_tariffs_table.php
-    - database/migrations/2024_11_23_131527_create_shipping_rules_table.php
-    - database/migrations/2024_11_23_131528_create_products_table.php
-    - database/migrations/2024_11_23_131529_create_valuations_table.php
-    - database/migrations/2024_11_23_131530_create_requests_table.php
-    - database/migrations/2024_11_23_131531_create_orders_table.php
-    - database/migrations/2024_11_23_131532_create_rating_reviews_table.php
-    - database/migrations/2024_11_23_131533_create_pages_table.php
+    - database/migrations/2024_11_27_052137_create_units_table.php
+    - database/migrations/2024_11_27_052138_create_categories_table.php
+    - database/migrations/2024_11_27_052139_create_brands_table.php
+    - database/migrations/2024_11_27_052140_create_attributes_table.php
+    - database/migrations/2024_11_27_052141_create_tariffs_table.php
+    - database/migrations/2024_11_27_052142_create_shipping_rules_table.php
+    - database/migrations/2024_11_27_052143_create_products_table.php
+    - database/migrations/2024_11_27_052144_create_valuations_table.php
+    - database/migrations/2024_11_27_052145_create_requests_table.php
+    - database/migrations/2024_11_27_052146_create_orders_table.php
+    - database/migrations/2024_11_27_052147_create_rating_reviews_table.php
+    - database/migrations/2024_11_27_052148_create_pages_table.php
     - app/Models/Unit.php
     - app/Models/Category.php
     - app/Models/Brand.php
@@ -36,7 +36,7 @@ created:
     - app/Models/RatingReview.php
     - app/Models/Page.php
 models:
-    User: { name: string, email: string, email_verified_at: 'datetime nullable', password: string, store: 'text nullable', remember_token: 'string nullable' }
+    User: { name: string, email: string, email_verified_at: 'timestamp nullable', password: string, store: 'json nullable', remember_token: 'string:100 nullable' }
     Unit: { id: id, name: 'nullable string:255', status: 'nullable string:255', created_by: 'nullable unsignedBigInteger', updated_by: 'nullable unsignedBigInteger', timestamps: timestamps, softdeletes: softDeletes }
     Category: { id: id, parent_id: 'id nullable foreign:categories.id', image: 'nullable string:255', name: 'nullable string:255', status: 'nullable string:255', created_by: 'nullable unsignedBigInteger', updated_by: 'nullable unsignedBigInteger', timestamps: timestamps, softdeletes: softDeletes }
     Brand: { id: id, image: 'nullable string:255', name: 'nullable string:255', status: 'nullable string:255', created_by: 'nullable unsignedBigInteger', updated_by: 'nullable unsignedBigInteger', timestamps: timestamps, softdeletes: softDeletes }
